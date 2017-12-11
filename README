@@ -1,0 +1,20 @@
+Interpretador Calculo Lambda
+
+Não conseguimos utilizar corretamente o getContents, então utlizamos a chamada direta através da função interpret.
+A entrada a ser fonecida deve ser: interpret(parserlamb(lexer"expressao-a-ser-avaliada"))[]
+Segue neste arquivo a indicacao de alguns testes realizados e seus respectivos retornos:
+
+Entrada: interpret(parserlamb(lexer "((lam t.lam f.f) (lam t.lam f.f)) (lam t. lam f.t)"))[]
+Saída: Abs 'a' (Abs 'b' (Var 'a'))
+
+Entrada: interpret(parserlamb(lexer "((lam t.lam f.f) (lam t.lam f.t)) (lam t. lam f.f)"))[]
+Saída: Abs 'a' (Abs 'b' (Var 'b'))
+
+Entrada: interpret(parserlamb(lexer "((lam t.lam f.f) (lam t.lam f.t)) (lam t.lam f.t)")) []
+Saída: Abs 'a' (Abs 'b' (Var 'a'))
+
+Entrada: interpret(parserlamb(lexer "(lam x.lam y.x) (t)")) [('t',1)]
+Saida: Abs 'a' (Var 't')
+
+Entrada: interpret(parserlamb(lexer "(lam z.lam y.y) (t)")) [('t',1)]
+Saida: Abs 'a' (Var 'a')
